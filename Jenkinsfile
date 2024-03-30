@@ -6,8 +6,7 @@ pipeline {
     }
     
     stages {
-
-         stage('Build') {
+        stage('Build') {
             steps {
                 sh 'docker build -t 3fastcoders/ca5:latest .'
             }
@@ -19,17 +18,16 @@ pipeline {
             }
         }
         
-       
-        stage('Push App') {
+        stage('Push') {
             steps {
                 sh 'docker push 3fastcoders/ca5:latest'
             }
         }
-        
     }
-  
+    
     post {
         always {
             sh 'docker logout'
         }
+    }
 }
