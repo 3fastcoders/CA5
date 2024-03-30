@@ -16,7 +16,7 @@ pipeline {
         
         stage('Tag') {
             steps {
-                sh 'docker tag mongo:4.4.29-focal 3fastcoders/ca4_mongo:4.4.29-focal'
+                sh 'docker tag mongo:4.4.29-focal 3fastcoders/mongo:4.4.29-focal'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
         
         stage('Push Database') {
             steps {
-                sh 'docker push 3fastcoders/ca4_mongo:4.4.29-focal'
+                sh 'docker push 3fastcoders/mongo:4.4.29-focal'
             }
         }
 
@@ -37,13 +37,13 @@ pipeline {
         // Member 2
         stage('Build') {
             steps {
-                sh 'docker build -t 3fastcoders/ca5:latest .'
+                sh 'docker build -t 3fastcoders/my-app:latest .'
             }
         }
 
         stage('Push App') {
             steps {
-                sh 'docker push 3fastcoders/ca5:latest'
+                sh 'docker push 3fastcoders/my-app:latest'
             }
         }
         
