@@ -6,9 +6,15 @@ pipeline {
     }
     
     stages {
-        stage('Build') {
+        stage('Pull') {
             steps {
-                sh 'docker build -t 3fastcoders/mongo:4.4.29-focal .'
+                sh 'docker pull mongo:4.4.29-focal'
+            }
+        }
+        
+        stage('Tag') {
+            steps {
+                sh 'docker tag mongo:4.4.29-focal 3fastcoders/ca4_mongo:4.4.29-focal'
             }
         }
         
@@ -20,7 +26,7 @@ pipeline {
         
         stage('Push') {
             steps {
-                sh 'docker push 3fastcoders/mongo:4.4.29-focal'
+                sh 'docker push 3fastcoders/ca4_mongo:4.4.29-focal'
             }
         }
     }
