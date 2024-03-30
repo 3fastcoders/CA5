@@ -53,8 +53,8 @@ pipeline {
         stage('Check Docker Images Existence') {
             steps {
                 script {
-                    def frontendImage = sh(script: "docker image inspect analysts/3fastcoders/my-app", returnStatus: true) == 0
-                    def backendImage = sh(script: "docker image inspect mongo:4.4.29-focal", returnStatus: true) == 0
+                    def frontendImage = sh(script: "docker image inspect 3fastcoders/my-app:latest", returnStatus: true) == 0
+                    def backendImage = sh(script: "docker image inspect 3fastcoders/mongo:4.4.29-focal", returnStatus: true) == 0
 
                     if (frontendImage && backendImage) {
                         echo "Docker images found on Docker Hub"
