@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t 3fastcoders/ca5:latest .'
+                sh 'docker build -t 3fastcoders/my-app:latest .'
             }
         }
         
@@ -22,7 +22,7 @@ pipeline {
         
         stage('Push') {
             steps {
-                sh 'docker push 3fastcoders/ca5:latest'
+                sh 'docker push 3fastcoders/my-app:latest'
             }
         }
     }
