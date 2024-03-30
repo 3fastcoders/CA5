@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongo_DB Display Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Database Records</h1>
+    </header>
+    <main>
+        
+        <h2>Hello, {{ username }}!</h2>
+        <p>Login successful! Welcome back.</p>
+
+        <!-- Display Rows -->
+        <ul>
+            {% for row in rows %}
+                <li>{{ row }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
