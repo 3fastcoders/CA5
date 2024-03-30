@@ -14,7 +14,13 @@ pipeline {
         
         stage('Login') {
             steps {
-                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_US --password $DOCKERHUB_CREDENTIALS_PSW"
+                script {
+                    // Extract username and password from credentials
+                    def creds = credentials('3fastcoders-dockerhub')
+                    def username = creds?.username ?: ''
+                    def password = creds?.password ?: ''
+                    sh "echo ${password} | docker login -u ${username} --password-stdin"
+                }
             }
         }
         
