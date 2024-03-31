@@ -1,17 +1,15 @@
 version: '3.1'
 services:
   my-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 3fastcoders/my-app:latest
     environment:
       - MONGO_USERNAME=${MONGO_USERNAME}
       - MONGO_PASSWORD=${MONGO_PASSWORD}
     ports:
-      - 5050:5000
+      - 8080:5000
     command: ["python", "app.py"]
   mongodb:
-    image: mongo:4.4.29-focal
+    image: 3fastcoders/mongo:4.4.29-focal
     ports:
       - 27017:27017
     environment:
@@ -19,7 +17,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     volumes:
       - ./db:/data/db
-        
   mongo-express:
     image: mongo-express
     ports:
